@@ -12,12 +12,13 @@ async function execute() {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer  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',
+          'Authorization': `Bearer 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`,
         },
       }
     );
-    console.log(response);
-    return response;
+    const {data} = response;
+    console.log(data.data[0].url);
+    return data;
 
   } catch (err) {
     console.log({ err })
