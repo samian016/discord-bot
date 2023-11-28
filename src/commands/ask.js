@@ -30,6 +30,10 @@ module.exports = {
       const { data } = response;
       const reply = data.choices[0].message.content;
       const user = userMention(interaction.user.id);
+      if (reply.length >= 1800) {
+        const buffer = Buffer.from(reply, 'utf-8');
+        return await interaction.editReply({ files: [{ attachment: buffer, name: 'response.txt' }] });
+      }
       return await interaction.editReply({
         content: `${user} Prompt: "${question}"\n Answer: \t ${reply}\n`,
       });
