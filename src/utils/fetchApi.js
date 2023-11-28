@@ -8,6 +8,12 @@ const urls = {
       'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
     }
   },
+  stableDiff: {
+    url: 'https://stablediffusionapi.com',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  },
 }
 const req = ({
   fullUrl,
@@ -28,7 +34,7 @@ const req = ({
     ...['post', 'patch'].includes(method.toLowerCase()) && { data },
     headers: {
       ...headers && { ...headers },
-      ...urls[base].headers && { ...urls[base].headers }
+      ...urls?.[base]?.headers && { ...urls[base].headers }
     }
   };
   return axios(payload);
