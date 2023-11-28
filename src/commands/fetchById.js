@@ -53,7 +53,7 @@ module.exports = {
           files: [output[0]],
         });
       }
-      else if (response.data.status === 'pending') {
+      else if (response.data.status === 'processing') {
         return await interaction.editReply({
           content: `${user}\n Result: ${id} request still pending`,
         });
