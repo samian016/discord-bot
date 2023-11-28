@@ -1,5 +1,4 @@
-const { default: axios } = require("axios");
-const { SlashCommandBuilder, AttachmentBuilder, userMention } = require("discord.js");
+const { SlashCommandBuilder, userMention } = require("discord.js");
 const { req } = require("../utils/fetchApi");
 
 module.exports = {
