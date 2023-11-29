@@ -25,7 +25,7 @@ module.exports = {
           'Content-Type': 'application/json',
         },
         data: {
-          "key": "wBJ30FC6yyUnMlpe5O3ZQFGiqPXbhLJ8bMscXUrV8auxz0Nt8gY6mmVXb2jl",
+          "key": process.env.STABLE_DIFF_API_KEY,
           "request_id": id
         }
       })
@@ -63,7 +63,6 @@ module.exports = {
           content: `${user}\n Issue: ${id} ${response.data.messege}`,
         });
       }
-      console.log(response)
       return await interaction.editReply({
         content: `Result: Bot is confused!`
       });

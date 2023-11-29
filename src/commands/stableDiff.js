@@ -58,14 +58,13 @@ module.exports = {
         },
       });
       const { data } = response;
-      console.log(data);
 
       if (data.status === 'processing') {
         return await interaction.editReply({
           content: `${user}\n Prompt: "${prompt}"\n Negative: "${neg}"\n  Result:Your image is processing in background, you can get this image using /fetchDiffution slashcommand\n id: ${data.id}.`,
         });
       }
-      else if (data.stats === 'success') {
+      else if (data.status === 'success') {
         const raw = await req({
           fullUrl: data.output[0],
           method: "GET",
@@ -91,5 +90,3 @@ module.exports = {
     }
   }
 }
-
-// 56969165 ,, 56988582  ,,  56988277
