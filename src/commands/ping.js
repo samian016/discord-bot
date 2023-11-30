@@ -1,38 +1,31 @@
 const { SlashCommandBuilder } = require("discord.js");
+const musicPlayer = require('../hooks/musicPlayer');
+const { videoToMP3 } = require("../utils/videoToMP3");
+const { playerManager } = require("../hooks/playerManager");
 
 module.exports = {
-  data: new SlashCommandBuilder().setName('ping').setDescription('the ping pong!'),
+  data: new SlashCommandBuilder()
+    .setName('ping')
+    .setDescription('the ping pong!')
+    .addStringOption(option =>
+      option.setName('youtubelink')
+        .setDescription('The youtube link to play music from.')
+        .setRequired(true)),
+
   async execute(interaction) {
-    const guild = interaction.guild;
-    if (!guild) return await interaction.reply("You are not in any server.");
-    const channlName = `${interaction.user.username}'s-playList`
-    const voiceChannel = guild.channels.cache.find(
-      (channel) => channel.type === 2 && channel.name === channlName
-    );
-    if (voiceChannel) {
-      console.log(interaction.client.user.id)
-      // const connection = await voiceChannel.join();
-      // console.log(connection);
-    } else {
-      const channel = await guild.channels.create({
-        name: channlName,
-        type: 2,
-        permissionOverwrites: [
-          {
-            id: interaction.user.id,
-            allow: [400, 10]
-          },
-          {
-            id: interaction.client.user.id,
-            allow: [400, 10]
-          }
-        ],
+    await interaction.deferReply({ ephemeral: true });
+    const inputedData = await interaction.options.getString('youtubelink');
+    if (musicPlayer.state) return interaction.editReply({ content: 'There is already a song playing. Please stop the music first using "/controlmusic:stop" command.', ephemeral: true });
+    const youtubeLinkRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/;
+    const youtubeLinkMatch = inputedData.match(youtubeLinkRegex);
+    if (!youtubeLinkMatch) return interaction.editReply({ content: 'Invalid youtube link.', ephemeral: true });
+    return videoToMP3(inputedData)
+      .then((response) => {
+        playerManager(interaction, response.url);
+        interaction.editReply({ content: `Playing ${youtubeLinkMatch[0]}...` });
+      })
+      .catch((er) => {
+        console.log(er)
       });
-      console.log('connection');
-    }
-    /* this is to create an channel
-    */
-    // voiceChannel.delete()
-    await interaction.reply('Pong!!!');
   }
 }

@@ -35,9 +35,10 @@ module.exports = {
       return await interaction.editReply({
         content: `${user} Prompt: "${prompt}"`,
         files: [attacment],
+        ephemeral: true
       });
     } catch (err) {
-      await interaction.editReply('An error occurred while processing the command.');
+      await interaction.editReply({ content: 'An error occurred while processing the command.', ephemeral: true });
       console.log({ err });
     }
   }

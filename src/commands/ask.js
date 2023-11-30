@@ -31,13 +31,14 @@ module.exports = {
       const user = userMention(interaction.user.id);
       if (reply.length >= 1800) {
         const buffer = Buffer.from(reply, 'utf-8');
-        return await interaction.editReply({ files: [{ attachment: buffer, name: 'response.txt' }] });
+        return await interaction.editReply({ files: [{ attachment: buffer, name: 'response.txt' }], ephemeral: true });
       }
       return await interaction.editReply({
         content: `${user} Prompt: "${question}"\n Answer: \t ${reply}\n`,
+        ephemeral: true
       });
     } catch (err) {
-      await interaction.editReply('An error occurred while processing the command.');
+      await interaction.editReply({ content: 'An error occurred while processing the command.', ephemeral: true });
       console.log({ err });
     }
   }

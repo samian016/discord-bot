@@ -26,7 +26,7 @@ module.exports = {
         .setMaxLength(200))
   ,
   async execute(interaction) {
-    await interaction.deferReply({ ephemeral: false });
+    await interaction.deferReply({ ephemeral: true });
     try {
       const name = await interaction.options.getString('name');
       const description = await interaction.options.getString('description');
@@ -64,10 +64,11 @@ module.exports = {
       return await interaction.editReply({
         content: `${user}`,
         files: [attacment],
+        ephemeral: true
       });
 
     } catch (err) {
-      await interaction.editReply('An error occurred while processing the command.');
+      await interaction.editReply({ content: 'An error occurred while processing the command.', ephemeral: true });
       console.log({ err });
     }
   }

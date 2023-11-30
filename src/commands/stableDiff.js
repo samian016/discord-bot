@@ -62,6 +62,7 @@ module.exports = {
       if (data.status === 'processing') {
         return await interaction.editReply({
           content: `${user}\n Prompt: "${prompt}"\n Negative: "${neg}"\n  Result:Your image is processing in background, you can get this image using /fetchDiffution slashcommand\n id: ${data.id}.`,
+          ephemeral: true
         });
       }
       else if (data.status === 'success') {
@@ -78,14 +79,19 @@ module.exports = {
         return await interaction.editReply({
           content: `${user}\n Prompt: "${prompt}"\n Negative: "${neg}"`,
           files: [attacment],
+          ephemeral: true
         });
       }
       return await interaction.editReply({
-        content: `${user}\n Prompt: "${prompt}"\n Negative: "${neg}"\n Result: Bot is confused!`
+        content: `${user}\n Prompt: "${prompt}"\n Negative: "${neg}"\n Result: Bot is confused!`,
+        ephemeral: true
       });
 
     } catch (err) {
-      await interaction.editReply('An error occurred while processing the command.');
+      await interaction.editReply({
+        content: 'An error occurred while processing the command.',
+        ephemeral: true
+      });
       console.log({ err });
     }
   }

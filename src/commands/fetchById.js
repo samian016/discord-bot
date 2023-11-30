@@ -46,28 +46,33 @@ module.exports = {
           return await interaction.editReply({
             content: `${user}\n Result of request ${id}`,
             files: [attacment],
+            ephemeral: true
           });
         }
         else return await interaction.editReply({
           content: `${user}\n Result of request ${id}`,
           files: [output[0]],
+          ephemeral: true
         });
       }
       else if (response.data.status === 'processing') {
         return await interaction.editReply({
           content: `${user}\n Result: ${id} request still pending`,
+          ephemeral: true
         });
       }
       else if (response.data.status === 'failed') {
         return await interaction.editReply({
           content: `${user}\n Issue: ${id} ${response.data.messege}`,
+          ephemeral: true
         });
       }
       return await interaction.editReply({
-        content: `Result: Bot is confused!`
+        content: `Result: Bot is confused!`,
+        ephemeral: true
       });
     } catch (err) {
-      await interaction.editReply('An error occurred while processing the command.');
+      await interaction.editReply({ content: 'An error occurred while processing the command.', ephemeral: true });
       console.log({ err });
     }
   }
