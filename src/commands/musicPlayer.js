@@ -5,8 +5,8 @@ const { playerManager } = require("../hooks/playerManager");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('the ping pong!')
+    .setName('play')
+    .setDescription('the player to play!')
     .addStringOption(option =>
       option.setName('youtubelink')
         .setDescription('The youtube link to play music from.')

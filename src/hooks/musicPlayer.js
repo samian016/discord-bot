@@ -10,16 +10,25 @@ class MusicPlayer {
     return (this.player = createAudioPlayer());
   }
 
-  play() {
-    return console.log("player");
+  play(interaction, user) {
+    if (this.player === null) return interaction.reply({ content: `${user} No music playing!` });
+    this.player.unpause();
+    this.state = true;
+    return interaction.reply({ content: `${user} unpaused the player.` });
   }
 
-  pause() {
-    return console.log("player");
+  pause(interaction, user) {
+    if (this.player === null) return interaction.reply({ content: `${user} No music playing!` });
+    this.player.pause();
+    this.state = false;
+    return interaction.reply({ content: `${user} pause the player.` });
   }
 
-  kill() {
-    return console.log("player");
+  kill(interaction, user) {
+    if (this.player === null) return interaction.reply({ content: `${user} No player instance available` });
+    this.player.stop();
+    this.state = false;
+    return interaction.reply({ content: `${user} pause the player.` });
   }
 }
 
