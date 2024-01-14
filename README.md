@@ -43,7 +43,7 @@ Discord bot that integrates with ChatGPT, [DALL-E](https://openai.com/dall-e-2),
     OPENAI_API_KEY=""
     STABLE_DIFF_API_KEY=""'
     ```
-6.**Run the server**:
+6. **Run the server**:
    ```bash
    yarn dev
    ```
