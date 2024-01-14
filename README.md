@@ -26,12 +26,27 @@ Discord bot that integrates with ChatGPT, [DALL-E](https://openai.com/dall-e-2),
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/samian016/discord-bot.git
+   ```
 2. **Enter the directory**:
    ```bash
    cd discord-Bot
+   ```
 3. **Install all dependencies**:
    ```bash
    yarn
+   ```
 4. **Create an discord bot from discord developer portal and get Bot token and Application ID**
-5. **Insert all required environment variable in [dev.env](/config/dev.env)**
+5. **Insert all required environment variable in [dev.env](/config/dev.env)**:
+   ```env
+    BOT_TOKEN=""
+    APPLICATION_ID=""
+    OPENAI_API_KEY=""
+    STABLE_DIFF_API_KEY=""'
+    ```
+6.**Run the server**:
+   ```bash
+   yarn dev
+   ```
+7. **Add the bot to your any discord server**
+8. **Try all commands**
    
