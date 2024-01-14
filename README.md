@@ -12,9 +12,7 @@ Discord bot that integrates with ChatGPT, [DALL-E](https://openai.com/dall-e-2),
   
 ## Usage
 
-1. **Invite the bot to your servwe**
-   
-3. **Slash Commands**:
+1. **Slash Commands**:
    - `/ask`: To ask question to ChatGPT.
    - `/coverlater`: To generate Cover later for job circular.
    - `/play`: To play an audio music from youtube.
@@ -33,4 +31,7 @@ Discord bot that integrates with ChatGPT, [DALL-E](https://openai.com/dall-e-2),
    cd discord-Bot
 3. **Install all dependencies**:
    ```bash
-   yarn 
+   yarn
+4. **Create an discord bot from discord developer portal and get Bot token and Application ID**
+5. **Insert all required environment variable in [dev.env](/config/dev.env)**
+   
