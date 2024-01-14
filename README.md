@@ -25,6 +25,6 @@ Discord bot that integrates with ChatGPT, [DALL-E](https://openai.com/dall-e-2),
 
 1. **Clone the Repository**:
    ```bash
-   git clone [https://github.com/arrafi-mahin/Discort-Bot](https://github.com/samian016/discord-bot.git)https://github.com/samian016/discord-bot.git
+   git clone https://github.com/samian016/discord-bot.git
    cd discord-Bot
    yarn 
