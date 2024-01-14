@@ -1,6 +1,6 @@
 #Discord Bot
 
-Discord bot that integrates with ChatGPT, ![DALL-E](https://openai.com/dall-e-2), ![Stable diffusion](https://stablediffusionweb.com/) and Youtube for interactive chat, image generation and play audio music. It provides several slash commands for various functionalities.
+Discord bot that integrates with ChatGPT, [DALL-E](https://openai.com/dall-e-2), [Stable diffusion](https://stablediffusionweb.com/) and Youtube for interactive chat, image generation and play audio music. It provides several slash commands for various functionalities.
 
 ## Features
 
